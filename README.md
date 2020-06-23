@@ -34,6 +34,6 @@ iranStock.status().then(stocks => {
   */
 }
 }, err => {
-	console.log(err)
+  console.log(err)
 })
 ```
