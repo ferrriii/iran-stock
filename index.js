@@ -21,7 +21,8 @@ function status() {
           value: stockProps[10],
           lowest: stockProps[11],
           highest: stockProps[12],
-          EPS: stockProps[13]
+          yesterday: stockProps[13],
+          EPS: stockProps[14]
         }
       })
       resolve(stockObjects)

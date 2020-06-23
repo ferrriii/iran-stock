@@ -14,7 +14,9 @@ This method fetches latest status of iran stocks.
 ```javascript
 const iranStock = require('iran-stock')
 
-iranStock.status().then(stocks => {
+// get all stocks, then print count and information of the first stock
+iranStock.status()
+.then(stocks => {
   console.log(stocks.length, stocks[0])
   /* output:
   1002 {
@@ -22,33 +24,37 @@ iranStock.status().then(stocks => {
   ISIN: 'IRO6MELZ96C1',
   symbol: 'تملي612',
   company: 'تسهيلات مسكن بانك ملي-اسفند96',
-  opening: '256029',
-  closing: '256029',
-  last: '256029',
-  count: '1',
-  volume: '2',
-  value: '512058',
-  lowest: '256029',
-  highest: '256029',
-  EPS: '269504'
+  opening: '256029', // price
+  closing: '256029', // price
+  last: '256029', // price
+  count: '1', // of trades
+  volume: '2', // of trades
+  value: '512058', // of trades
+  lowest: '256029', // price
+  highest: '256029', // price
+  yesterday: '269504', // price
+  EPS: ''
+  }
   */
-}
 }, err => {
   console.log(err)
 })
 ```
 
 ### history
-This method provides historical price information for a specific stock.
+This method provides historical daily price information for a specific stock.
 ```javascript
+const iranStock = require('iran-stock')
+
 iranStock.history({
   // stock code
   code: '41302553376174581',
-  // start date
+  // start date in yyyymmdd format
   startDate: '20200621',
-  // end date
+  // end date in yyyymmdd format
   endDate: '20200623'
-}).then(records => {
+})
+.then(records => {
   console.log(records)
   /* output:
   [
@@ -87,4 +93,39 @@ iranStock.history({
 }, err => {
   console.log(err)
 })
+```
+
+### Example
+Below example fetches prices for a specific stock June 2020.
+```javascript
+const iranStock = require('iran-stock')
+
+async function load() {
+  try {
+    // get stock list
+    const stocks = await iranStock.status()
+    console.log('stock data received')
+	// find the 'فجر' stock
+    const myStock = stocks.filter(stock => stock.symbol == 'فجر')[0]
+    if (!myStock) {
+      console.log('stock not found')
+      return;
+    }
+    console.log('stock found')
+	// get price history for the stock
+    const prices = await iranStock.history({
+      // stock code
+      code: myStock.code,
+      // start date in yyyymmdd format
+      startDate: '20200601',
+      // end date in yyyymmdd format
+      endDate: '20200630'
+    })
+    console.log(prices)
+  } catch (err) {
+    console.log('error', err)
+  }
+}
+
+load()
 ```

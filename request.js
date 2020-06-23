@@ -1,4 +1,3 @@
-const https = require('https')
 const http = require('http')
 const zlib = require('zlib')
 
@@ -7,9 +6,13 @@ function get(url) {
 
     http.get(url, (resp) => {
       let data = ''
-      // TODO: below checks
-      // const { statusCode } = resp
-      // const encoding = resp.headers['Content-Encoding']
+      const { statusCode } = resp
+      if (statusCode !== 200) {
+        reject('http error ' + statusCode)
+        return
+      }
+      // TODO: below checks encdoing and set appropriate zlib pipe
+      // const encoding = resp.headers['content-encoding']
       let unzippedResponse = resp.pipe(zlib.createGunzip())
 
       // A chunk of data has been recieved.
@@ -20,6 +23,10 @@ function get(url) {
       // The whole response has been received.
       unzippedResponse.on('end', () => {
         resolve(data)
+      });
+
+      unzippedResponse.on('error', err => {
+        reject(err)
       });
 
     }).on("error", (err) => {
