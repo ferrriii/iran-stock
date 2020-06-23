@@ -1,0 +1,20 @@
+{
+  "name": "iran-stock",
+  "version": "1.0.0",
+  "description": "Live and historical Iran stock market status",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/ferrriii/iran-stock.git"
+  },
+  "keywords": [
+    "stock",
+    "iran"
+  ],
+  "author": "Farshad",
+  "license": "MIT",
+  "homepage": "https://github.com/ferrriii/iran-stock#readme"
+}
