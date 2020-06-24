@@ -9,7 +9,7 @@ npm i iran-stock
 
 ## API
 
-### status
+### status()
 This method fetches latest status of iran stocks.
 ```javascript
 const iranStock = require('iran-stock')
@@ -17,10 +17,12 @@ const iranStock = require('iran-stock')
 // get all stocks, then print count and information of the first stock
 iranStock.status()
 .then(stocks => {
+
   console.log(stocks.length, stocks[0])
+
   /* output:
   1002 {
-  code: '143187001116603',
+  code: '143187001116603', // stock code
   ISIN: 'IRO6MELZ96C1',
   symbol: 'تملي612',
   company: 'تسهيلات مسكن بانك ملي-اسفند96',
@@ -36,12 +38,13 @@ iranStock.status()
   EPS: ''
   }
   */
+
 }, err => {
   console.log(err)
 })
 ```
 
-### history
+### history()
 This method provides historical daily price information for a specific stock.
 ```javascript
 const iranStock = require('iran-stock')
@@ -55,6 +58,7 @@ iranStock.history({
   endDate: '20200623'
 })
 .then(records => {
+
   console.log(records)
   /* output:
   [
@@ -90,29 +94,33 @@ iranStock.history({
     }
   ]
   */
+
 }, err => {
   console.log(err)
 })
 ```
 
 ### Example
-Below example fetches prices for a specific stock June 2020.
+Below example fetches price list of a specific stock in June 2020.
 ```javascript
 const iranStock = require('iran-stock')
 
 async function load() {
   try {
+
     // get stock list
     const stocks = await iranStock.status()
     console.log('stock data received')
-	// find the 'فجر' stock
+
+    // find the 'فجر' stock
     const myStock = stocks.filter(stock => stock.symbol == 'فجر')[0]
     if (!myStock) {
       console.log('stock not found')
       return;
     }
     console.log('stock found')
-	// get price history for the stock
+
+    // get price history for the stock
     const prices = await iranStock.history({
       // stock code
       code: myStock.code,
@@ -122,6 +130,7 @@ async function load() {
       endDate: '20200630'
     })
     console.log(prices)
+
   } catch (err) {
     console.log('error', err)
   }
