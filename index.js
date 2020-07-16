@@ -17,7 +17,7 @@ function status() {
       let stockObjects = stocks.map(stock => {
         stockProps = stock.split(',')
         // invalid record
-        if (stockProps.length < 15) return {}
+        if (stockProps.length < 15) return
 
         return {
           code: stockProps[0],
@@ -37,6 +37,8 @@ function status() {
         }
       })
 
+      // remove undefined stocks
+      stockObjects = stockObjects.filter(stock => stock)
       resolve(stockObjects)
 
     } catch (e) {
@@ -59,7 +61,7 @@ function history({ code, startDate, endDate }) {
       records = records.filter(record => record)
         .map(record => {
           let fields = record.split(',')
-          if (fields.length < 11) return {}
+          if (fields.length < 11) return
 
           return {
             date: fields[1],
@@ -73,6 +75,7 @@ function history({ code, startDate, endDate }) {
           }
         })
 
+      records = records.filter(record => record)
       resolve(records)
 
     } catch (e) {
