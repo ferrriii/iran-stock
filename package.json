@@ -4,7 +4,7 @@
   "description": "Live and historical Iran stock market status",
   "main": "index.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "test": "node test.js"
   },
   "repository": {
     "type": "git",
@@ -15,7 +15,8 @@
     "iran",
     "trading",
     "بورس",
-    "ایران"
+    "ایران",
+	"سهام"
   ],
   "author": "Farshad",
   "license": "MIT",
