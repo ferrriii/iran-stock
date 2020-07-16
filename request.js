@@ -11,21 +11,25 @@ function get(url) {
         reject('http error ' + statusCode)
         return
       }
-      // TODO: below checks encdoing and set appropriate zlib pipe
-      // const encoding = resp.headers['content-encoding']
-      let unzippedResponse = resp.pipe(zlib.createGunzip())
+
+      const encoding = resp.headers['content-encoding']
+	  const length = Number(resp.headers['content-length'])
+	  let responsePipe = resp
+	  if (encoding === 'gzip' && length > 0) {
+        responsePipe = resp.pipe(zlib.createGunzip())
+	  }
 
       // A chunk of data has been recieved.
-      unzippedResponse.on('data', (chunk) => {
+      responsePipe.on('data', (chunk) => {
         data += chunk
       });
 
       // The whole response has been received.
-      unzippedResponse.on('end', () => {
+      responsePipe.on('end', () => {
         resolve(data)
       });
 
-      unzippedResponse.on('error', err => {
+      responsePipe.on('error', err => {
         reject(err)
       });
 
