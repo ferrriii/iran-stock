@@ -1,6 +1,6 @@
 {
   "name": "iran-stock",
-  "version": "1.3.0",
+  "version": "1.4.0",
   "description": "Live and historical Iran stock market status",
   "main": "index.js",
   "scripts": {
@@ -16,7 +16,7 @@
     "trading",
     "بورس",
     "ایران",
-	"سهام"
+    "سهام"
   ],
   "author": "Farshad",
   "license": "MIT",
