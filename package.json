@@ -1,6 +1,6 @@
 {
   "name": "iran-stock",
-  "version": "1.4.0",
+  "version": "1.4.1",
   "description": "Live and historical Iran stock market status",
   "main": "index.js",
   "scripts": {
