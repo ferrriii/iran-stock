@@ -20,6 +20,5 @@
   ],
   "author": "Farshad",
   "license": "MIT",
-  "publishConfig": { "registry": "https://npm.pkg.github.com/" },
   "homepage": "https://github.com/ferrriii/iran-stock#readme"
 }
