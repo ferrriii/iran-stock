@@ -5,6 +5,7 @@ function check(expr, test) {
     console.log('\x1b[32m%s\x1b[0m', 'Passed:' , test)
   } else {
     console.log('\x1b[31m%s\x1b[0m', 'Failed:', test)
+	process.exit(1);
   }
 }
 
