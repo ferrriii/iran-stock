@@ -1,4 +1,6 @@
 # iran-stock
+<img alt="weekly downloads" src="https://img.shields.io/npm/dw/iran-stock?style=flat-square"> <img alt="version" src="https://img.shields.io/npm/v/iran-stock?style=flat-square"> <img alt="issues" src="https://img.shields.io/github/issues/ferrriii/iran-stock?style=flat-square"> <img alt="package size" src="https://img.shields.io/bundlephobia/minzip/iran-stock?style=flat-square"> <img alt="forks" src="https://img.shields.io/github/forks/ferrriii/iran-stock?style=flat-square"> <img alt="stars" src="https://img.shields.io/github/stars/ferrriii/iran-stock?style=flat-square"> <img alt="license" src="https://img.shields.io/github/license/ferrriii/iran-stock?style=flat-square"> <img alt="programming language" src="https://img.shields.io/github/languages/top/ferrriii/iran-stock?style=flat-square"> <img alt="test status" src="https://img.shields.io/github/workflow/status/ferrriii/iran-stock/test?label=test">
+
 Nodejs package for live and historical Iran stock market status
 
 ## Install
